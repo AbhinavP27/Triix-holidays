@@ -64,10 +64,10 @@ function Navbar() {
 
                             <div className="dropdown-menu-custom">
 
-                                <a href="/explore">
+                                <Link to="/explore">
                                     <Compass size={17} />
                                     Destinations
-                                </a>
+                                </Link>
 
                                 <Link to="/hotels"><Hotel size={17} />Hotels</Link>
 

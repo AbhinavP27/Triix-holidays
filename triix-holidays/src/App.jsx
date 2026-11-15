@@ -17,6 +17,8 @@ import TravelPartnersPage from './pages/TravelPartnersPage';
 import Guides from './pages/Guides';
 import TripPlanner from './pages/TripPlanner';
 import Wishlist from "./pages/Wishlist";
+import Explore from './pages/Explore';
+import ActivitiesPage from './pages/Activities';
 
 
 
@@ -63,6 +65,9 @@ function App() {
         <Route path="/guides" element={<Guides />} />
         <Route path="/trip-planner" element={<TripPlanner />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/destinations" element={<Explore />} />
+        <Route path="/activities" element={<ActivitiesPage />} />
       </Routes>
 
     </BrowserRouter>
