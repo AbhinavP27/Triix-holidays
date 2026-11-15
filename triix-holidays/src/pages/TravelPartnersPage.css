@@ -1,0 +1,514 @@
+/* Page */
+
+.travel-community-page {
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+/* Hero */
+
+.community-hero {
+  min-height: 390px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 31, 46, 0.9),
+      rgba(12, 31, 46, 0.35)
+    ),
+    url("https://images.unsplash.com/photo-1527631746610-bca00a040d60");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+
+  padding: 60px 8%;
+}
+
+.community-hero-content {
+  max-width: 650px;
+}
+
+.community-hero-content > span {
+  color: #ff8a4c;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.community-hero-content h1 {
+  font-family: "Outfit", sans-serif;
+  color: white;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.community-hero-content h1 span {
+  color: #ff8a4c;
+}
+
+.community-hero-content p {
+  color: #e2e8f0;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.community-hero-content button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 22px;
+  padding: 13px 20px;
+
+  background: #ff8a4c;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.community-hero-content button:hover {
+  background: #e96f30;
+}
+
+/* Container */
+
+.community-listing {
+  padding: 70px 6%;
+}
+
+.community-container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* Heading */
+
+.community-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.community-heading > div:first-child > span {
+  color: #ff8a4c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.community-heading h2 {
+  font-family: "Outfit", sans-serif;
+  color: #142b3b;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.community-heading p {
+  color: #718096;
+  font-size: 14px;
+}
+
+.community-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 17px;
+
+  background: #eaf2f8;
+  color: #2878a5;
+
+  border-radius: 25px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Success */
+
+.community-success {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #dcfce7;
+  color: #166534;
+
+  border: 1px solid #bbf7d0;
+  border-radius: 9px;
+
+  padding: 13px 16px;
+  margin-bottom: 20px;
+
+  font-size: 13px;
+}
+
+.community-success button {
+  background: transparent;
+  border: none;
+  color: #166534;
+}
+
+/* Filter Box */
+
+.community-filter-box {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 15px;
+
+  background: white;
+  border: 1px solid #edf0f4;
+  border-radius: 14px;
+
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+/* Search */
+
+.community-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 13px;
+
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.community-search svg {
+  color: #718096;
+  flex-shrink: 0;
+}
+
+.community-search input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 0;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: #142b3b;
+  font-size: 13px;
+}
+
+/* Filters */
+
+.community-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.community-filter label {
+  color: #536575;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.community-filter input,
+.community-filter select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  color: #142b3b;
+  font-size: 12px;
+  outline: none;
+}
+
+/* Travel Types */
+
+.community-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.community-types button {
+  padding: 9px 19px;
+
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 25px;
+
+  color: #536575;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.community-types button:hover,
+.community-types button.active {
+  background: #142b3b;
+  color: white;
+  border-color: #142b3b;
+}
+
+/* Grid */
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Empty */
+
+.community-empty {
+  grid-column: 1 / -1;
+
+  background: white;
+  border-radius: 14px;
+
+  padding: 65px 20px;
+  text-align: center;
+
+  color: #718096;
+}
+
+.community-empty svg {
+  color: #2878a5;
+  margin-bottom: 15px;
+}
+
+.community-empty h3 {
+  color: #142b3b;
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 8px;
+}
+
+/* Modal Overlay */
+
+.travel-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(12, 31, 46, 0.7);
+  backdrop-filter: blur(5px);
+
+  overflow-y: auto;
+}
+
+/* Modal */
+
+.travel-post-modal {
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: white;
+  border-radius: 16px;
+
+  padding: 28px;
+}
+
+.travel-modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.travel-modal-header > div > span {
+  color: #ff8a4c;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.travel-modal-header h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 27px;
+  color: #142b3b;
+  margin: 7px 0;
+}
+
+.travel-modal-header p {
+  color: #718096;
+  font-size: 13px;
+}
+
+.travel-modal-header button {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f1f6fa;
+  color: #142b3b;
+
+  border: none;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Form */
+
+.travel-post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.travel-post-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.travel-post-field label {
+  color: #536575;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.travel-post-field input,
+.travel-post-field select,
+.travel-post-field textarea {
+  width: 100%;
+  padding: 13px;
+
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+
+  color: #142b3b;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+
+  outline: none;
+}
+
+.travel-post-field input:focus,
+.travel-post-field select:focus,
+.travel-post-field textarea:focus {
+  border-color: #2878a5;
+}
+
+.travel-post-field textarea {
+  resize: vertical;
+}
+
+/* Submit */
+
+.create-post-submit {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 14px;
+
+  background: #ff8a4c;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.create-post-submit:hover {
+  background: #e96f30;
+}
+
+/* Responsive */
+
+@media (max-width: 1050px) {
+
+  .community-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .community-filter-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .community-hero {
+    min-height: 330px;
+    padding: 45px 6%;
+  }
+
+  .community-hero-content h1 {
+    font-size: 38px;
+  }
+
+  .community-listing {
+    padding: 45px 5%;
+  }
+
+  .community-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .community-heading h2 {
+    font-size: 28px;
+  }
+
+  .community-filter-box {
+    grid-template-columns: 1fr;
+  }
+
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-post-modal {
+    padding: 20px;
+  }
+
+  .travel-post-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+}

@@ -1,0 +1,295 @@
+/* Page */
+
+.rentals-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+/* Hero */
+
+.rentals-hero {
+  min-height: 350px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 31, 46, 0.9),
+      rgba(12, 31, 46, 0.3)
+    ),
+    url("https://images.unsplash.com/photo-1489824904134-891ab64532f1");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+
+  padding: 60px 8%;
+}
+
+.rentals-hero-content {
+  max-width: 650px;
+}
+
+.rentals-hero-content > span {
+  color: #ff8a4c;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.rentals-hero-content h1 {
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 15px 0;
+}
+
+.rentals-hero-content h1 span {
+  color: #ff8a4c;
+}
+
+.rentals-hero-content p {
+  color: #e2e8f0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Listing */
+
+.rentals-listing {
+  padding: 70px 6%;
+}
+
+.rentals-container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* Heading */
+
+.rentals-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.rentals-label {
+  color: #ff8a4c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.rentals-heading h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 34px;
+  color: #142b3b;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.rentals-heading p {
+  color: #718096;
+  font-size: 14px;
+}
+
+.vehicle-count {
+  background: #eaf2f8;
+  color: #2878a5;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Filter Box */
+
+.rental-filter-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+
+  background: white;
+  padding: 20px;
+
+  border: 1px solid #edf0f4;
+  border-radius: 14px;
+
+  margin-bottom: 25px;
+}
+
+/* Search */
+
+.rental-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 15px;
+
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.rental-search svg {
+  color: #718096;
+}
+
+.rental-search input {
+  width: 100%;
+  padding: 13px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #142b3b;
+  font-size: 14px;
+}
+
+/* Price Filter */
+
+.rental-price-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rental-price-filter label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #536575;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rental-price-filter select {
+  width: 100%;
+  padding: 12px;
+
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  color: #142b3b;
+  outline: none;
+  font-size: 13px;
+}
+
+/* Category Filters */
+
+.vehicle-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.vehicle-category-filters button {
+  padding: 10px 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+
+  background: white;
+  color: #536575;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.vehicle-category-filters button:hover,
+.vehicle-category-filters button.active {
+  background: #142b3b;
+  color: white;
+  border-color: #142b3b;
+}
+
+/* Grid */
+
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Empty State */
+
+.vehicle-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 14px;
+}
+
+.vehicle-empty h3 {
+  color: #142b3b;
+}
+
+.vehicle-empty p {
+  color: #718096;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+
+  .vehicles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .rental-filter-box {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .rentals-hero {
+    min-height: 300px;
+    padding: 45px 6%;
+  }
+
+  .rentals-hero-content h1 {
+    font-size: 35px;
+  }
+
+  .rentals-listing {
+    padding: 45px 5%;
+  }
+
+  .rentals-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .rentals-heading h2 {
+    font-size: 28px;
+  }
+
+  .vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-category-filters {
+    gap: 8px;
+  }
+
+  .vehicle-category-filters button {
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+
+}

@@ -1,0 +1,232 @@
+.hero-section {
+    position: relative;
+    min-height: 650px;
+    background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(10, 25, 38, 0.85),
+        rgba(10, 25, 38, 0.35)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1250px;
+    color: white;
+}
+
+/* BADGE */
+
+.hero-badge {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.12);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* HEADING */
+
+.hero-content h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1.12;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: #ff9b68;
+}
+
+.hero-content p {
+    max-width: 620px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 40px;
+}
+
+/* SEARCH BOX */
+
+.travel-search {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 12px;
+    border-radius: 18px;
+    max-width: 1050px;
+    gap: 10px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.search-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    color: #ff8a4c;
+    border-right: 1px solid #e8edf1;
+    min-width: 0;
+}
+
+.search-field label {
+    display: block;
+    color: #142b3b;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.search-field input,
+.search-field select {
+    border: none;
+    outline: none;
+    width: 100%;
+    min-width: 0;
+    font-size: 13px;
+    color: #657786;
+    background: transparent;
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ff8a4c;
+    color: white;
+    border: none;
+    padding: 17px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    background: #e87537;
+    transform: translateY(-2px);
+}
+
+/* TRUST TEXT */
+
+.hero-trust {
+    display: flex;
+    gap: 30px;
+    margin-top: 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .hero-section {
+        min-height: 750px;
+    }
+
+    .travel-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-field {
+        border-right: none;
+        border-bottom: 1px solid #e8edf1;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .hero-section {
+        padding: 65px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 43px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-trust {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.destination-suggestions {
+    position: absolute;
+    top: 65px;
+    left: -40px;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    padding: 8px;
+    z-index: 100;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #ff8a4c;
+}
+
+.suggestion-item:hover {
+    background: #f7f9fc;
+}
+
+.suggestion-item strong {
+    display: block;
+    color: #142b3b;
+    font-size: 14px;
+}
+
+.suggestion-item small {
+    display: block;
+    color: #8795a1;
+    font-size: 12px;
+}
+
+.no-suggestions {
+    padding: 15px;
+    color: #8795a1;
+    font-size: 13px;
+}

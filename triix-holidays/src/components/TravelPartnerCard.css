@@ -1,0 +1,194 @@
+.partner-profile-card {
+  background: #ffffff;
+  border: 1px solid #edf0f4;
+  border-radius: 17px;
+  padding: 22px;
+  transition: box-shadow 0.3s ease;
+}
+
+.partner-profile-card:hover {
+  box-shadow: 0 15px 35px rgba(20, 43, 59, 0.09);
+}
+
+/* Header */
+
+.partner-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.partner-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.partner-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.partner-user-info h3 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Outfit", sans-serif;
+  color: #142b3b;
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.partner-user-info span {
+  color: #718096;
+  font-size: 12px;
+}
+
+.verified-icon {
+  color: #2878a5;
+}
+
+.partner-travel-type {
+  background: #fff0e7;
+  color: #e96f30;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Destination */
+
+.partner-destination {
+  background: #f1f6fa;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.partner-destination > span {
+  color: #718096;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.partner-destination h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: #142b3b;
+  margin: 7px 0;
+}
+
+.partner-destination p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #718096;
+  font-size: 12px;
+  margin: 0;
+}
+
+/* Description */
+
+.partner-description {
+  color: #718096;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 42px;
+  margin-bottom: 20px;
+}
+
+/* Details */
+
+.partner-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
+  padding: 18px 0;
+  border-top: 1px solid #edf0f4;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.partner-details-grid > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.partner-details-grid svg {
+  color: #2878a5;
+  flex-shrink: 0;
+}
+
+.partner-details-grid span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.partner-details-grid small {
+  color: #9aa5b1;
+  font-size: 11px;
+}
+
+.partner-details-grid strong {
+  color: #142b3b;
+  font-size: 12px;
+}
+
+/* Departure */
+
+.partner-departure {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #718096;
+  font-size: 12px;
+  margin: 17px 0;
+}
+
+.partner-departure svg {
+  color: #2878a5;
+}
+
+.partner-departure strong {
+  color: #142b3b;
+}
+
+/* Connect Button */
+
+.partner-connect-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #142b3b;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  padding: 13px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.partner-connect-button:hover {
+  background: #2878a5;
+}
+
+.partner-connect-button.connected {
+  background: #dcfce7;
+  color: #15803d;
+}

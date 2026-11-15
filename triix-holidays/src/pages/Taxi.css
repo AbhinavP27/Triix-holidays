@@ -1,0 +1,405 @@
+/* Page */
+
+.taxi-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+/* Hero */
+
+.taxi-hero {
+  min-height: 350px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 31, 46, 0.9),
+      rgba(12, 31, 46, 0.3)
+    ),
+    url("https://images.unsplash.com/photo-1511919884226-fd3cad34687c");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+
+  padding: 60px 8%;
+}
+
+.taxi-hero-content {
+  max-width: 650px;
+}
+
+.taxi-hero-content > span {
+  color: #ff8a4c;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.taxi-hero-content h1 {
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 15px 0;
+}
+
+.taxi-hero-content h1 span {
+  color: #ff8a4c;
+}
+
+.taxi-hero-content p {
+  color: #e2e8f0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Container */
+
+.taxi-container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* Booking Section */
+
+.taxi-booking-section {
+  padding: 70px 6%;
+}
+
+.taxi-heading {
+  margin-bottom: 30px;
+}
+
+.taxi-heading > span,
+.taxi-options-heading > div > span,
+.taxi-summary-left > span {
+  color: #ff8a4c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.taxi-heading h2,
+.taxi-options-heading h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 34px;
+  color: #142b3b;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.taxi-heading p,
+.taxi-options-heading p {
+  color: #718096;
+  font-size: 14px;
+}
+
+/* Form */
+
+.taxi-booking-form {
+  background: white;
+  border: 1px solid #edf0f4;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(20, 43, 59, 0.04);
+}
+
+.taxi-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.taxi-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.taxi-form-group label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #536575;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.taxi-form-group label svg {
+  color: #2878a5;
+}
+
+.taxi-form-group input,
+.taxi-form-group select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f7f9fc;
+  color: #142b3b;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.taxi-form-group input:focus,
+.taxi-form-group select:focus {
+  border-color: #2878a5;
+  box-shadow: 0 0 0 3px rgba(40, 120, 165, 0.1);
+}
+
+.taxi-demo-note {
+  color: #718096;
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+/* Error */
+
+.taxi-error {
+  margin-top: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+/* Search Button */
+
+.taxi-search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 25px;
+  padding: 15px 25px;
+
+  background: #ff8a4c;
+  color: white;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.taxi-search-button:hover {
+  background: #e96f30;
+}
+
+/* Taxi Options */
+
+.taxi-options-section {
+  padding: 30px 6% 70px;
+}
+
+.taxi-options-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.taxi-distance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eaf2f8;
+  color: #2878a5;
+  padding: 11px 17px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.taxi-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* Summary */
+
+.taxi-summary-section {
+  padding: 0 6% 70px;
+}
+
+.taxi-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  background: #142b3b;
+  color: white;
+
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.taxi-summary-left h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  margin: 10px 0 5px;
+}
+
+.taxi-summary-left p {
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+.taxi-summary-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.taxi-summary-right div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.taxi-summary-right small {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.taxi-summary-right strong {
+  color: white;
+  font-size: 14px;
+}
+
+.taxi-summary-right svg {
+  color: #ff8a4c;
+}
+
+/* Confirmation */
+
+.taxi-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 22px;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  color: #166534;
+}
+
+.taxi-confirmation > svg {
+  flex-shrink: 0;
+}
+
+.taxi-confirmation h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.taxi-confirmation p {
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.taxi-confirmation strong {
+  display: block;
+  margin-top: 10px;
+}
+
+.taxi-confirmation .taxi-confirmation-note {
+  margin-top: 10px;
+  color: #15803d;
+  font-size: 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+
+  .taxi-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .taxi-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .taxi-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .taxi-hero {
+    min-height: 300px;
+    padding: 45px 6%;
+  }
+
+  .taxi-hero-content h1 {
+    font-size: 36px;
+  }
+
+  .taxi-booking-section {
+    padding: 45px 5%;
+  }
+
+  .taxi-heading h2,
+  .taxi-options-heading h2 {
+    font-size: 28px;
+  }
+
+  .taxi-booking-form {
+    padding: 20px;
+  }
+
+  .taxi-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .taxi-options-section {
+    padding: 20px 5% 50px;
+  }
+
+  .taxi-options-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .taxi-summary-section {
+    padding: 0 5% 50px;
+  }
+
+  .taxi-summary {
+    padding: 22px;
+  }
+
+  .taxi-summary-right {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .taxi-summary-right strong {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .taxi-summary-left h2 {
+    font-size: 30px;
+  }
+
+}

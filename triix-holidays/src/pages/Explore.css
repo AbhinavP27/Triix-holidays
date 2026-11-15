@@ -1,0 +1,17 @@
+.explore-page-header {
+  background: #142b3b;
+  color: white;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.explore-page-header h1 {
+  font-family: "Outfit", sans-serif;
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.explore-page-header p {
+  color: #dce5ec;
+  font-size: 16px;
+}
