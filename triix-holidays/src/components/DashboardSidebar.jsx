@@ -6,7 +6,6 @@ import {
     Heart,
     Map,
     User,
-    Settings,
     LogOut
 } from "lucide-react";
 
@@ -82,6 +81,8 @@ function DashboardSidebar() {
                         <Link
                             to={item.path}
                             key={item.name}
+                            title={item.name}
+                            aria-current={active ? "page" : undefined}
                             className={`dashboard-menu-link ${active ? "active" : ""
                                 }`}
                         >

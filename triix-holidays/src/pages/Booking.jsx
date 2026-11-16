@@ -14,6 +14,7 @@ import {
 import hotels from "../data/hotels";
 import activities from "../data/activities";
 import vehicles from "../data/vehicles";
+import packages from "../data/packages";
 
 import "./Booking.css";
 
@@ -31,7 +32,8 @@ function Booking() {
     const dataSources = {
         hotel: hotels,
         activity: activities,
-        vehicle: vehicles
+        vehicle: vehicles,
+        package: packages
     };
 
 
@@ -120,6 +122,14 @@ function Booking() {
             // Vehicle price per day
 
             total = price * duration;
+
+        }
+
+        else if (type === "package") {
+
+            // Package price per person
+
+            total = price * travellers;
 
         }
 
@@ -212,6 +222,8 @@ function Booking() {
                     ? "Hotel"
                     : type === "activity"
                     ? "Activity"
+                    : type === "package"
+                    ? "Package"
                     : "Vehicle",
 
             date: formData.date,
@@ -230,7 +242,7 @@ function Booking() {
                 duration:
                     type === "activity"
                         ? item.duration
-                        : Number(formData.duration),
+                        : item.duration,
                 bookingType: type
             }
 
@@ -302,6 +314,8 @@ function Booking() {
                             ? "/hotels"
                             : type === "activity"
                             ? "/activities"
+                            : type === "package"
+                            ? "/packages"
                             : "/rentals"
                     }
                     className="booking-back"
@@ -472,14 +486,16 @@ function Booking() {
 
                             {/* DURATION */}
 
-                            {type !== "activity" && (
+                            {type !== "activity" && type !== "package" && (
 
                                 <div className="booking-field">
 
                                     <label>
                                         {type === "hotel"
                                             ? "Number of Nights"
-                                            : "Rental Duration (Days)"}
+                                            : type === "vehicle"
+                                            ? "Rental Duration (Days)"
+                                            : "Number of Days"}
                                     </label>
 
                                     <div className="booking-input-icon">
@@ -575,6 +591,8 @@ function Booking() {
                                         ? `₹${item.price} × ${formData.duration} nights × ${formData.travellers} travellers`
                                         : type === "vehicle"
                                         ? `₹${item.price} × ${formData.duration} days`
+                                        : type === "package"
+                                        ? `₹${item.price} × ${formData.travellers} travellers · ${item.duration}`
                                         : `₹${item.price} × ${formData.travellers} travellers`
                                     }
                                 </span>

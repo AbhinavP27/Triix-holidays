@@ -214,6 +214,38 @@
   margin-top: 5px;
 }
 
+.bookings-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.bookings-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #f7f9fc;
+  border: 1px solid #e0e7ed;
+  color: #657585;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.bookings-tab:hover {
+  background: #eaf3f9;
+  color: #2878a5;
+}
+
+.bookings-tab.active {
+  background: #2878a5;
+  color: white;
+  border-color: #2878a5;
+}
+
 
 /* SEARCH */
 

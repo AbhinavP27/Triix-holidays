@@ -7,13 +7,13 @@ import {
     Clock,
     Camera,
     ArrowLeft,
-    Compass,
-    Wallet
+    Compass
 } from "lucide-react";
 
 import destinations from "../data/destinations";
 
 import destinationDetails from "../data/destinationDetails";
+import packages from "../data/packages";
 
 import "./DestinationDetails.css";
 
@@ -29,6 +29,9 @@ function DestinationDetails() {
 
     // Find additional information
     const details = destinationDetails[id];
+    const hasPackagesForDestination = destination
+        ? packages.some((item) => item.location.toLowerCase().includes(destination.name.toLowerCase()))
+        : false;
 
 
     // Invalid destination
@@ -357,6 +360,27 @@ function DestinationDetails() {
                             Explore Hotels
 
                         </Link>
+
+                        <Link
+                            to={`/guides?location=${encodeURIComponent(destination.name)}`}
+                            className="destination-related-btn"
+                        >
+                            Find a local guide
+                        </Link>
+
+                        <Link
+                            to={`/travel-partners?destination=${encodeURIComponent(destination.name)}`}
+                            className="destination-related-btn"
+                        >
+                            Find travel mates
+                        </Link>
+
+                        {hasPackagesForDestination && <Link
+                            to={`/packages?destination=${encodeURIComponent(destination.name)}`}
+                            className="destination-related-btn"
+                        >
+                            View packages
+                        </Link>}
 
 
                         <p className="booking-disclaimer">

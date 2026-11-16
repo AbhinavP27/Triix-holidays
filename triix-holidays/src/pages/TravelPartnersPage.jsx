@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import {
   Search,
@@ -30,10 +31,20 @@ function getLocalDate() {
 
 function TravelPartnersPage() {
   const { showToast } = useToast();
+  const [searchParams] = useSearchParams();
 
-  const [partners, setPartners] = useState(initialPartners);
+  const [partners, setPartners] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("triixTravelPartners") || "null");
+      if (!Array.isArray(saved)) return initialPartners;
+      const merged = [...initialPartners, ...saved];
+      return [...new Map(merged.map((partner) => [String(partner.id), partner])).values()];
+    } catch {
+      return initialPartners;
+    }
+  });
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchParams.get("destination") || "");
 
   const [departure, setDeparture] = useState("");
 
@@ -42,6 +53,7 @@ function TravelPartnersPage() {
   const [selectedType, setSelectedType] = useState("All");
 
   const [maxBudget, setMaxBudget] = useState(10000);
+  const [showAll, setShowAll] = useState(false);
 
   const [connections, setConnections] = useState([]);
 
@@ -60,6 +72,10 @@ function TravelPartnersPage() {
   });
 
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("triixTravelPartners", JSON.stringify(partners));
+  }, [partners]);
 
   // Filter Partners
 
@@ -102,6 +118,7 @@ function TravelPartnersPage() {
     selectedType,
     maxBudget
   ]);
+  const visiblePartners = showAll ? filteredPartners : filteredPartners.slice(0, 6);
 
   // Connect with Traveller
 
@@ -192,6 +209,7 @@ function TravelPartnersPage() {
     setSelectedDate("");
     setSelectedType("All");
     setMaxBudget(10000);
+    setShowAll(false);
 
   }
 
@@ -254,7 +272,7 @@ function TravelPartnersPage() {
 
               <Users size={18} />
 
-              {filteredPartners.length} Travellers Found
+              Showing {visiblePartners.length} of {filteredPartners.length} travellers
 
             </div>
 
@@ -288,7 +306,10 @@ function TravelPartnersPage() {
                 type="text"
                 placeholder="Search destination..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setShowAll(false);
+                }}
               />
 
             </div>
@@ -301,7 +322,10 @@ function TravelPartnersPage() {
                 type="text"
                 placeholder="Enter city"
                 value={departure}
-                onChange={(e) => setDeparture(e.target.value)}
+                onChange={(e) => {
+                  setDeparture(e.target.value);
+                  setShowAll(false);
+                }}
               />
 
             </div>
@@ -314,7 +338,10 @@ function TravelPartnersPage() {
                 type="date"
                 min={getLocalDate()}
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => {
+                  setSelectedDate(e.target.value);
+                  setShowAll(false);
+                }}
               />
 
             </div>
@@ -325,7 +352,10 @@ function TravelPartnersPage() {
 
               <select
                 value={maxBudget}
-                onChange={(e) => setMaxBudget(e.target.value)}
+                onChange={(e) => {
+                  setMaxBudget(e.target.value);
+                  setShowAll(false);
+                }}
               >
 
                 <option value="10000">Any Budget</option>
@@ -353,6 +383,7 @@ function TravelPartnersPage() {
               "Adventure",
               "Nature",
               "Beach",
+              "Culture",
               "Photography"
             ].map((type) => (
 
@@ -361,7 +392,10 @@ function TravelPartnersPage() {
                 className={
                   selectedType === type ? "active" : ""
                 }
-                onClick={() => setSelectedType(type)}
+                onClick={() => {
+                  setSelectedType(type);
+                  setShowAll(false);
+                }}
               >
                 {type}
               </button>
@@ -376,7 +410,7 @@ function TravelPartnersPage() {
 
             {filteredPartners.length > 0 ? (
 
-              filteredPartners.map((partner) => (
+              visiblePartners.map((partner) => (
 
                 <TravelPartnerCard
                   key={partner.id}
@@ -404,6 +438,24 @@ function TravelPartnersPage() {
             )}
 
           </div>
+
+          {filteredPartners.length > 6 && (
+            <div className="partners-show-more-wrap">
+              <button
+                type="button"
+                className="partners-show-more"
+                onClick={() => {
+                  const nextShowAll = !showAll;
+                  setShowAll(nextShowAll);
+                  if (!nextShowAll) {
+                    document.querySelector(".community-listing")?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {showAll ? "Show less" : "Explore more"}
+              </button>
+            </div>
+          )}
 
         </div>
 
@@ -574,6 +626,7 @@ function TravelPartnersPage() {
                     <option value="Adventure">Adventure</option>
                     <option value="Nature">Nature</option>
                     <option value="Beach">Beach</option>
+                    <option value="Culture">Culture</option>
                     <option value="Photography">Photography</option>
 
                   </select>

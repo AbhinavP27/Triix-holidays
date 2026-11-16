@@ -6,6 +6,7 @@ import {
   Languages,
   Compass
 } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 import guides from "../data/guides";
 
@@ -14,8 +15,9 @@ import GuideCard from "../components/GuideCard";
 import "./Guides.css";
 
 function Guides() {
+  const [searchParams] = useSearchParams();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchParams.get("location") || "");
 
   const [selectedSpeciality, setSelectedSpeciality] =
     useState("All");
@@ -24,28 +26,15 @@ function Guides() {
     useState("All");
 
   const [maxPrice, setMaxPrice] = useState(2000);
+  const [showAll, setShowAll] = useState(false);
 
   const [requests, setRequests] = useState([]);
 
   const [message, setMessage] = useState("");
 
-  const specialities = [
-    "All",
-    "Nature & Wildlife",
-    "History & Culture",
-    "Beach & Adventure",
-    "Trekking & Camping",
-    "Backwater Tours",
-    "Photography Tours"
-  ];
+  const specialities = ["All", ...new Set(guides.map((guide) => guide.speciality))];
 
-  const languages = [
-    "All",
-    "English",
-    "Malayalam",
-    "Hindi",
-    "Tamil"
-  ];
+  const languages = ["All", ...new Set(guides.flatMap((guide) => guide.languages))];
 
   // Filter Guides
 
@@ -84,6 +73,7 @@ function Guides() {
     selectedLanguage,
     maxPrice
   ]);
+  const visibleGuides = showAll ? filteredGuides : filteredGuides.slice(0, 6);
 
   // Booking Request
 
@@ -153,7 +143,7 @@ function Guides() {
 
               <Users size={18} />
 
-              {filteredGuides.length} Guides Found
+              Showing {visibleGuides.length} of {filteredGuides.length} guides
 
             </div>
 
@@ -189,7 +179,10 @@ function Guides() {
                 type="text"
                 placeholder="Search guide, location or speciality..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setShowAll(false);
+                }}
               />
 
             </div>
@@ -205,9 +198,10 @@ function Guides() {
 
               <select
                 value={selectedSpeciality}
-                onChange={(e) =>
-                  setSelectedSpeciality(e.target.value)
-                }
+                onChange={(e) => {
+                  setSelectedSpeciality(e.target.value);
+                  setShowAll(false);
+                }}
               >
 
                 {specialities.map((speciality) => (
@@ -236,9 +230,10 @@ function Guides() {
 
               <select
                 value={selectedLanguage}
-                onChange={(e) =>
-                  setSelectedLanguage(e.target.value)
-                }
+                onChange={(e) => {
+                  setSelectedLanguage(e.target.value);
+                  setShowAll(false);
+                }}
               >
 
                 {languages.map((language) => (
@@ -264,7 +259,10 @@ function Guides() {
 
               <select
                 value={maxPrice}
-                onChange={(e) => setMaxPrice(e.target.value)}
+                onChange={(e) => {
+                  setMaxPrice(e.target.value);
+                  setShowAll(false);
+                }}
               >
 
                 <option value="2000">Any Price</option>
@@ -289,7 +287,7 @@ function Guides() {
 
             {filteredGuides.length > 0 ? (
 
-              filteredGuides.map((guide) => (
+              visibleGuides.map((guide) => (
 
                 <GuideCard
                   key={guide.id}
@@ -317,6 +315,24 @@ function Guides() {
             )}
 
           </div>
+
+          {filteredGuides.length > 6 && (
+            <div className="guides-show-more-wrap">
+              <button
+                type="button"
+                className="guides-show-more"
+                onClick={() => {
+                  const nextShowAll = !showAll;
+                  setShowAll(nextShowAll);
+                  if (!nextShowAll) {
+                    document.querySelector(".guides-listing")?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {showAll ? "Show less" : "Explore more"}
+              </button>
+            </div>
+          )}
 
         </div>
 

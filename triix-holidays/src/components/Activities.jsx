@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import activities from "../data/activities";
 import ActivityCard from "./ActivityCard";
 import "./Activities.css";
@@ -7,21 +7,18 @@ function Activities() {
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
 
-  const categories = [
+  const categories = useMemo(() => [
     "All",
-    "Trekking",
-    "Camping",
-    "Water Sports",
-    "Adventure",
-    "Safari"
-  ];
+    ...new Set(activities.map((activity) => activity.category))
+  ], []);
 
   const filteredActivities = activities.filter((activity) => {
 
-    const matchesSearch =
-      activity.name.toLowerCase().includes(search.toLowerCase()) ||
-      activity.location.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = `${activity.name} ${activity.location} ${activity.category}`
+      .toLowerCase()
+      .includes(search.toLowerCase().trim());
 
     const matchesCategory =
       selectedCategory === "All" ||
@@ -30,9 +27,10 @@ function Activities() {
     return matchesSearch && matchesCategory;
 
   });
+  const visibleActivities = showAll ? filteredActivities : filteredActivities.slice(0, 6);
 
   return (
-    <section className="activities-section">
+    <section className="activities-section" id="activities-list">
 
       <div className="activities-container">
 
@@ -60,7 +58,10 @@ function Activities() {
             type="text"
             placeholder="Search activities or destinations..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setShowAll(false);
+            }}
           />
 
         </div>
@@ -76,7 +77,10 @@ function Activities() {
               className={
                 selectedCategory === category ? "active" : ""
               }
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowAll(false);
+              }}
             >
               {category}
             </button>
@@ -91,7 +95,7 @@ function Activities() {
 
           {filteredActivities.length > 0 ? (
 
-            filteredActivities.map((activity) => (
+            visibleActivities.map((activity) => (
 
               <ActivityCard
                 key={activity.id}
@@ -110,6 +114,24 @@ function Activities() {
           )}
 
         </div>
+
+        {filteredActivities.length > 6 && (
+          <div className="activities-show-more-wrap">
+            <button
+              type="button"
+              className="activities-show-more"
+              onClick={() => {
+                const nextShowAll = !showAll;
+                setShowAll(nextShowAll);
+                if (!nextShowAll) {
+                  document.getElementById("activities-list")?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              {showAll ? "Show less" : "Explore more"}
+            </button>
+          </div>
+        )}
 
       </div>
 

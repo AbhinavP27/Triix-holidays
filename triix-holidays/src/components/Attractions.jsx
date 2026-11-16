@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { motion } from 'framer-motion'
 
@@ -17,21 +17,18 @@ function Attractions() {
 
     const [search, setSearch] = useState('')
     const [activeCategory, setActiveCategory] = useState('All')
+    const [showAll, setShowAll] = useState(false)
 
-    const categories = [
+    const categories = useMemo(() => [
         'All',
-        'Nature',
-        'Waterfalls',
-        'Beach',
-        'Historical',
-        'Adventure'
-    ]
+        ...new Set(attractions.map((item) => item.category))
+    ], [])
 
     const filteredAttractions = attractions.filter((item) => {
 
-        const matchesSearch =
-            item.name.toLowerCase().includes(search.toLowerCase()) ||
-            item.location.toLowerCase().includes(search.toLowerCase())
+        const matchesSearch = `${item.name} ${item.location} ${item.category} ${item.description}`
+            .toLowerCase()
+            .includes(search.toLowerCase().trim())
 
         const matchesCategory =
             activeCategory === 'All' ||
@@ -40,10 +37,11 @@ function Attractions() {
         return matchesSearch && matchesCategory
 
     })
+    const visibleAttractions = showAll ? filteredAttractions : filteredAttractions.slice(0, 6)
 
     return (
 
-        <section className="attractions-section">
+        <section className="attractions-section" id="popular-attractions">
 
             <div className="attractions-container">
 
@@ -77,7 +75,10 @@ function Attractions() {
                         type="text"
                         placeholder="Search tourist attractions or locations..."
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => {
+                            setSearch(e.target.value)
+                            setShowAll(false)
+                        }}
                     />
 
                 </div>
@@ -96,7 +97,10 @@ function Attractions() {
                                     ? 'attraction-filter active'
                                     : 'attraction-filter'
                             }
-                            onClick={() => setActiveCategory(category)}
+                            onClick={() => {
+                                setActiveCategory(category)
+                                setShowAll(false)
+                            }}
                         >
 
                             {category}
@@ -115,17 +119,17 @@ function Attractions() {
                     <h3>Popular Attractions</h3>
 
                     <span>
-                        {filteredAttractions.length} places found
+                        Showing {visibleAttractions.length} of {filteredAttractions.length} places
                     </span>
 
                 </div>
 
 
-                {filteredAttractions.length > 0 ? (
+                    {filteredAttractions.length > 0 ? (
 
                     <div className="attractions-grid">
 
-                        {filteredAttractions.map((attraction, index) => (
+                        {visibleAttractions.map((attraction, index) => (
 
                             <motion.div
                                 key={attraction.id}
@@ -160,6 +164,24 @@ function Attractions() {
 
                     </div>
 
+                )}
+
+                {filteredAttractions.length > 6 && (
+                    <div className="attraction-show-more-wrap">
+                        <button
+                            type="button"
+                            className="attraction-show-more"
+                            onClick={() => {
+                                const nextShowAll = !showAll
+                                setShowAll(nextShowAll)
+                                if (!nextShowAll) {
+                                    document.getElementById('popular-attractions')?.scrollIntoView({ behavior: 'smooth' })
+                                }
+                            }}
+                        >
+                            {showAll ? 'Show less' : 'Explore more'}
+                        </button>
+                    </div>
                 )}
 
             </div>

@@ -267,7 +267,8 @@
 /* BUTTONS */
 
 .plan-trip-btn,
-.view-hotels-btn {
+.view-hotels-btn,
+.destination-related-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -299,6 +300,19 @@
 .view-hotels-btn:hover {
     background: #2878A5;
     color: white;
+}
+
+.destination-related-btn {
+    margin-top: 10px;
+    border: 1px solid #e1e8e4;
+    color: #315c4c;
+    background: #fff;
+}
+
+.destination-related-btn:hover {
+    border-color: #315c4c;
+    color: #fff;
+    background: #315c4c;
 }
 
 .booking-disclaimer {

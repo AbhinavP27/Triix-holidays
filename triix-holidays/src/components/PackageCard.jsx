@@ -12,7 +12,11 @@ function PackageCard({ packageData }) {
 
     return (
 
-        <div className="package-card">
+        <Link
+            to={`/packages/${packageData.id}`}
+            className="package-card"
+            aria-label={`View details for ${packageData.name}`}
+        >
 
             {/* IMAGE */}
 
@@ -102,22 +106,17 @@ function PackageCard({ packageData }) {
 
                     </div>
 
-                    <Link
-                        to={`/packages/${packageData.id}`}
-                        className="package-book-btn"
-                    >
-
-                        Book Now
+                    <span className="package-book-btn">
+                        View details
 
                         <ArrowRight size={17} />
-
-                    </Link>
+                    </span>
 
                 </div>
 
             </div>
 
-        </div>
+        </Link>
 
     )
 

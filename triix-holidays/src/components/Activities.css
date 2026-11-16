@@ -252,6 +252,28 @@
   color: #718096;
 }
 
+.activities-show-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.activities-show-more {
+  padding: 12px 24px;
+  border: 1px solid #142b3b;
+  border-radius: 28px;
+  background: transparent;
+  color: #142b3b;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .2s ease, color .2s ease;
+}
+
+.activities-show-more:hover {
+  background: #142b3b;
+  color: #fff;
+}
+
 /* Responsive */
 
 @media (max-width: 992px) {

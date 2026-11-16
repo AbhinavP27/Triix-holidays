@@ -1,36 +1,37 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { motion } from 'framer-motion'
 
 import destinations from '../data/destinations'
 
 import DestinationCard from './DestinationCard'
-import { Link } from "react-router-dom";
+import { Search, Compass } from 'lucide-react'
 
 import './Destinations.css'
 
 function Destinations() {
 
     const [activeCategory, setActiveCategory] = useState('All')
+    const [search, setSearch] = useState('')
+    const [showAll, setShowAll] = useState(false)
 
-    const categories = [
+    const categories = useMemo(() => [
         'All',
-        'Mountains',
-        'Beach',
-        'Nature',
-        'Backwaters'
-    ]
+        ...new Set(destinations.map((item) => item.category))
+    ], [])
 
-    const filteredDestinations =
-        activeCategory === 'All'
-            ? destinations
-            : destinations.filter(
-                (item) => item.category === activeCategory
-            )
+    const filteredDestinations = destinations.filter((item) => {
+        const matchesCategory = activeCategory === 'All' || item.category === activeCategory
+        const matchesSearch = `${item.name} ${item.state} ${item.category}`
+            .toLowerCase()
+            .includes(search.toLowerCase().trim())
+        return matchesCategory && matchesSearch
+    })
+    const visibleDestinations = showAll ? filteredDestinations : filteredDestinations.slice(0, 6)
 
     return (
 
-        <section className="destinations-section">
+        <section className="destinations-section" id="destination-list">
 
             <div className="destinations-container">
 
@@ -64,6 +65,20 @@ function Destinations() {
                 </motion.div>
 
 
+                <label className="destination-search" htmlFor="destination-search-input">
+                    <Search size={18} />
+                    <input
+                        id="destination-search-input"
+                        type="search"
+                        placeholder="Search destinations or states"
+                        value={search}
+                        onChange={(event) => {
+                            setSearch(event.target.value)
+                            setShowAll(false)
+                        }}
+                    />
+                </label>
+
                 {/* CATEGORY FILTERS */}
 
                 <div className="destination-filters">
@@ -77,7 +92,10 @@ function Destinations() {
                                     ? 'filter-btn active'
                                     : 'filter-btn'
                             }
-                            onClick={() => setActiveCategory(category)}
+                            onClick={() => {
+                                setActiveCategory(category)
+                                setShowAll(false)
+                            }}
                         >
 
                             {category}
@@ -91,9 +109,9 @@ function Destinations() {
 
                 {/* DESTINATION GRID */}
 
-                <div className="destinations-grid">
+                <div className="destinations-grid" id="destination-grid">
 
-                    {filteredDestinations.map((destination, index) => (
+                    {visibleDestinations.map((destination, index) => (
 
                         <motion.div
                             key={destination.id}
@@ -116,19 +134,31 @@ function Destinations() {
 
                 </div>
 
+                {filteredDestinations.length === 0 && (
+                    <div className="destination-empty">
+                        <Compass size={34} />
+                        <h3>No destinations found</h3>
+                        <p>Try another name or choose a different category.</p>
+                    </div>
+                )}
+
 
                 {/* VIEW ALL */}
 
-                <div className="view-all-container">
-
-                    <button className="view-all-btn">
-
-                        <Link to="/explore" className="explore-all-btn">
-                            Explore All Destinations
-                        </Link>
+                {filteredDestinations.length > 6 && <div className="view-all-container">
+                    <button
+                        className="view-all-btn"
+                        onClick={() => {
+                            const nextShowAll = !showAll
+                            setShowAll(nextShowAll)
+                            if (!nextShowAll) {
+                                document.getElementById('destination-list')?.scrollIntoView({ behavior: 'smooth' })
+                            }
+                        }}
+                    >
+                        {showAll ? 'Show less' : 'Explore more'}
                     </button>
-
-                </div>
+                </div>}
 
             </div>
 

@@ -5,6 +5,7 @@ import {
     Ticket,
     ArrowUpRight
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function AttractionCard({ attraction }) {
 
@@ -92,13 +93,17 @@ function AttractionCard({ attraction }) {
                         {attraction.reviews.toLocaleString('en-IN')} reviews
                     </span>
 
-                    <button className="attraction-explore-btn">
+                    <Link
+                        to={attraction.destinationId ? `/destinations/${attraction.destinationId}` : "/explore"}
+                        className="attraction-explore-btn"
+                        aria-label={`Explore ${attraction.name}`}
+                    >
 
                         Explore
 
                         <ArrowUpRight size={17} />
 
-                    </button>
+                    </Link>
 
                 </div>
 

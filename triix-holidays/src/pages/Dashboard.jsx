@@ -8,11 +8,11 @@ import {
   ArrowRight,
   Clock,
   CheckCircle,
-  XCircle,
-  Search
+  Search,
+  LayoutDashboard
 } from "lucide-react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import DashboardSidebar from "../components/DashboardSidebar";
 
@@ -41,7 +41,9 @@ function Dashboard() {
 
   const [search, setSearch] = useState("");
 
-  const [activeTab, setActiveTab] = useState("overview");
+  const location = useLocation();
+
+  const isBookingsTab = location.pathname === "/dashboard/bookings";
 
   useEffect(() => {
 
@@ -76,11 +78,15 @@ function Dashboard() {
     const matchesSearch =
       booking.title.toLowerCase().includes(search.toLowerCase()) ||
       booking.location.toLowerCase().includes(search.toLowerCase()) ||
-      string(booking.id).toLowerCase().includes(search.toLowerCase());
+      String(booking.id).toLowerCase().includes(search.toLowerCase());
 
     return matchesFilter && matchesSearch;
 
   });
+
+  const visibleBookings = isBookingsTab
+    ? filteredBookings
+    : filteredBookings.slice(0, 3);
 
 
   const confirmedCount = bookings.filter(
@@ -161,10 +167,12 @@ function Dashboard() {
         <header className="dashboard-header">
 
           <div>
-            <h1>Dashboard</h1>
+            <h1>{isBookingsTab ? "My Bookings" : "Dashboard"}</h1>
 
             <p>
-              Welcome back! Manage your travel activities here.
+              {isBookingsTab
+                ? "View and manage your saved travel reservations."
+                : "Welcome back! Manage your travel activities here."}
             </p>
           </div>
 
@@ -179,6 +187,8 @@ function Dashboard() {
         </header>
 
 
+        {!isBookingsTab && (
+          <>
         {/* PROFILE BANNER */}
 
         <section className="dashboard-banner">
@@ -278,6 +288,9 @@ function Dashboard() {
 
         </section>
 
+          </>
+        )}
+
 
         {/* BOOKINGS */}
 
@@ -286,8 +299,25 @@ function Dashboard() {
           <div className="bookings-heading">
 
             <div>
-              <h2>My Bookings</h2>
-              <p>Manage your travel reservations</p>
+              <h2>{isBookingsTab ? "All Bookings" : "Recent Bookings"}</h2>
+              <p>{isBookingsTab ? `${bookings.length} saved reservation${bookings.length === 1 ? "" : "s"}` : "Your latest travel reservations"}</p>
+            </div>
+
+            <div className="bookings-tabs">
+              <Link
+                to="/dashboard"
+                className={`bookings-tab ${!isBookingsTab ? "active" : ""}`}
+              >
+                <LayoutDashboard size={16} />
+                Overview
+              </Link>
+              <Link
+                to="/dashboard/bookings"
+                className={`bookings-tab ${isBookingsTab ? "active" : ""}`}
+              >
+                <CalendarCheck size={16} />
+                All Bookings
+              </Link>
             </div>
 
           </div>
@@ -321,6 +351,7 @@ function Dashboard() {
                 "Hotel",
                 "Activity",
                 "Taxi",
+                "Vehicle",
                 "Package"
               ].map((filter) => (
 
@@ -361,7 +392,7 @@ function Dashboard() {
 
             ) : (
 
-              filteredBookings.map((booking) => (
+              visibleBookings.map((booking) => (
 
                 <div
                   className="booking-card"
@@ -407,19 +438,19 @@ function Dashboard() {
 
                         <>
                           <p>
-                            Customer: {booking.details.customerName}
+                            Customer: {booking.details.customerName || "—"}
                           </p>
 
                           <p>
-                            Travellers: {booking.details.travellers}
+                            Travellers: {booking.details.travellers || "—"}
                           </p>
 
                           <p>
-                            Duration: {booking.details.duration}
+                            Duration: {booking.details.duration || "—"}
                           </p>
 
                           <p>
-                            Booking Type: {booking.details.bookingType}
+                            Booking Type: {booking.details.bookingType || booking.category}
                           </p>
                         </>
 

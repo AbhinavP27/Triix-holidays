@@ -160,13 +160,13 @@ function BookingConfirmation() {
                 {/* ACTIONS */}
 
                 <Link
-                    to="/dashboard"
+                    to="/dashboard/bookings"
                     className="confirmation-dashboard-btn"
                 >
 
                     <LayoutDashboard size={18} />
 
-                    Go to Dashboard
+                    View My Bookings
 
                 </Link>
 

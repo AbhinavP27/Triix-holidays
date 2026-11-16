@@ -103,6 +103,9 @@ function Navbar() {
 
                 <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
 
+                    {loggedIn ? (
+                        <>
+
                     <Link to="/" onClick={closeMenu}>
                         Home
                     </Link>
@@ -245,6 +248,18 @@ function Navbar() {
 
                     </div>
 
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/" onClick={closeMenu}>Home</Link>
+                            <a href="/#services" onClick={closeMenu}>Services</a>
+                            <div className="mobile-nav-actions">
+                                <Link to="/login" className="login-btn" onClick={closeMenu}>Log in</Link>
+                                <Link to="/register" className="signup-btn" onClick={closeMenu}>Create account</Link>
+                            </div>
+                        </>
+                    )}
+
                 </div>
 
 
@@ -252,9 +267,11 @@ function Navbar() {
 
                 <div className="navbar-actions">
 
-                    <Link to="/wishlist" className="nav-link">
-                        <Heart size={17} />
-                    </Link>
+                    {loggedIn && (
+                        <Link to="/wishlist" className="nav-link" aria-label="Wishlist">
+                            <Heart size={17} />
+                        </Link>
+                    )}
 
 
                     {loggedIn ? (

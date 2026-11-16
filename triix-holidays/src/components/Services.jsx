@@ -10,7 +10,7 @@ function Services() {
 
     return (
 
-        <section className="services-section">
+        <section className="services-section" id="services" aria-labelledby="services-title">
 
             <div className="services-container">
 
@@ -22,19 +22,12 @@ function Services() {
                     transition={{ duration: 0.6 }}
                 >
 
-                    <span className="section-label">
-                        WHAT WE OFFER
-                    </span>
+                    <span className="section-label">PLAN YOUR HOLIDAY</span>
 
-                    <h2>
-                        Everything You Need,
-                        <span> All in One Place.</span>
-                    </h2>
+                    <h2 id="services-title">Services for every part of your trip.</h2>
 
                     <p>
-                        From finding the perfect stay to discovering
-                        unforgettable experiences, we've got your
-                        entire journey covered.
+                        Choose what you need for your next holiday. Your trip starts with one simple plan.
                     </p>
 
                 </motion.div>

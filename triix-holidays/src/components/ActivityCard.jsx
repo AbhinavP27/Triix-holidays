@@ -1,4 +1,4 @@
-import { MapPin, Star, Clock, ArrowUpRight } from "lucide-react";
+import { MapPin, Star, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import WishlistButton from "./WishlistButton";
 import { Link } from "react-router-dom"

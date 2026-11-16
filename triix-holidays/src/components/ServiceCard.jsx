@@ -15,10 +15,7 @@ function ServiceCard({ service }) {
 
             <div
                 className="service-icon"
-                style={{
-                    backgroundColor: service.color,
-                    color: service.iconColor
-                }}
+                style={{ color: '#49665e' }}
             >
 
                 <Icon size={28} strokeWidth={1.8} />
