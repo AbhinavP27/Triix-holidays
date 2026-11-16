@@ -19,7 +19,17 @@ import TripPlanner from './pages/TripPlanner';
 import Wishlist from "./pages/Wishlist";
 import Explore from './pages/Explore';
 import ActivitiesPage from './pages/Activities';
-
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicOnlyRoute from "./components/PublicOnlyRoute";
+import DestinationDetails from "./pages/DestinationDetails";
+import Booking from "./pages/Booking";
+import BookingConfirmation from "./pages/BookingConfirmation";
+import Footer from "./components/Footer";
 
 
 function Home() {
@@ -55,6 +65,10 @@ function App() {
           path="/search"
           element={<SearchResults />}
         />
+        <Route
+          path="/destinations/:id"
+          element={<DestinationDetails />}
+        />
         <Route path="/hotels" element={<Hotels />} />
         <Route path="/rentals" element={<Rentals />} />
         <Route path="/taxi" element={<Taxi />} />
@@ -68,7 +82,47 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/destinations" element={<Explore />} />
         <Route path="/activities" element={<ActivitiesPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard/bookings"
+          element={<Dashboard />}
+        />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword />}
+        />
+
+        <Route element={<PublicOnlyRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Route>
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/bookings" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+        <Route
+          path="/booking/:type/:id"
+          element={<Booking />}
+        />
+
+        <Route
+          path="/booking-confirmation/:bookingId"
+          element={<BookingConfirmation />}
+        />
+        <Route path="/packages" element={<Packages />} />
+        <Route path="/community" element={<TravelPartnersPage />} />
       </Routes>
+      <Footer/>
 
     </BrowserRouter>
 

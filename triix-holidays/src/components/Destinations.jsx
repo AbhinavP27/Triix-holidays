@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import destinations from '../data/destinations'
 
 import DestinationCard from './DestinationCard'
+import { Link } from "react-router-dom";
 
 import './Destinations.css'
 
@@ -122,8 +123,9 @@ function Destinations() {
 
                     <button className="view-all-btn">
 
-                        Explore All Destinations →
-
+                        <Link to="/explore" className="explore-all-btn">
+                            Explore All Destinations
+                        </Link>
                     </button>
 
                 </div>

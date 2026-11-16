@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { isAuthenticated, logoutDemo } from "../utils/auth";
 
 import {
     Menu,
@@ -13,15 +15,62 @@ import {
     Users2,
     Wallet,
     Heart
-
 } from 'lucide-react'
 
 import './Navbar.css'
 
+
 function Navbar() {
 
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [exploreOpen, setExploreOpen] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(isAuthenticated());
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const [exploreOpen, setExploreOpen] = useState(false);
+
+    const navigate = useNavigate();
+
+
+    // Authentication Update
+
+    useEffect(() => {
+
+        const updateAuth = () => {
+            setLoggedIn(isAuthenticated());
+        };
+
+        window.addEventListener("authChanged", updateAuth);
+
+        return () => {
+            window.removeEventListener("authChanged", updateAuth);
+        };
+
+    }, []);
+
+
+    // Logout
+
+    const handleLogout = () => {
+
+        logoutDemo();
+
+        setMenuOpen(false);
+
+        navigate("/", { replace: true });
+
+    };
+
+
+    // Close Mobile Menu
+
+    const closeMenu = () => {
+
+        setMenuOpen(false);
+
+        setExploreOpen(false);
+
+    };
+
 
     return (
 
@@ -30,8 +79,13 @@ function Navbar() {
             <div className="navbar-inner">
 
 
+                {/* LOGO */}
 
-                <div className="navbar-logo">
+                <Link
+                    to="/"
+                    className="navbar-logo"
+                    onClick={closeMenu}
+                >
 
                     <div className="logo-icon">
                         <Compass size={25} />
@@ -42,60 +96,79 @@ function Navbar() {
                         <span>HOLIDAYS</span>
                     </div>
 
-                </div>
+                </Link>
 
 
-
+                {/* NAVIGATION */}
 
                 <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
 
-                    <a href="/">Home</a>
+                    <Link to="/" onClick={closeMenu}>
+                        Home
+                    </Link>
+
+
+                    {/* EXPLORE DROPDOWN */}
 
                     <div className="nav-dropdown">
 
                         <button
                             className="dropdown-toggle"
                             onClick={() => setExploreOpen(!exploreOpen)}
+                            aria-expanded={exploreOpen}
                         >
-                            Explore <ChevronDown size={15} />
+
+                            Explore
+
+                            <ChevronDown
+                                size={16}
+                                className={exploreOpen ? "rotate-chevron" : ""}
+                            />
+
                         </button>
+
 
                         {exploreOpen && (
 
                             <div className="dropdown-menu-custom">
 
-                                <Link to="/explore">
+                                <Link to="/explore" onClick={closeMenu}>
                                     <Compass size={17} />
                                     Destinations
                                 </Link>
 
-                                <Link to="/hotels"><Hotel size={17} />Hotels</Link>
+                                <Link to="/hotels" onClick={closeMenu}>
+                                    <Hotel size={17} />
+                                    Hotels
+                                </Link>
 
-                                <Link to="/rentals"><Car size={17} />Vehicle Rentals</Link>
+                                <Link to="/rentals" onClick={closeMenu}>
+                                    <Car size={17} />
+                                    Vehicle Rentals
+                                </Link>
 
-                                <Link to="/taxi"><Car size={17} />Taxi Booking</Link>
+                                <Link to="/taxi" onClick={closeMenu}>
+                                    <Car size={17} />
+                                    Taxi Booking
+                                </Link>
 
-                                <Link to="/travel-partners">
+                                <Link to="/travel-partners" onClick={closeMenu}>
                                     <Users size={17} />
                                     Travel Partners
                                 </Link>
 
-                                <Link to="/activities">
+                                <Link to="/activities" onClick={closeMenu}>
                                     <Map size={17} />
                                     Activities
                                 </Link>
 
-                                <Link to="/trip-planner">
-                                    <Wallet size={17}/>
+                                <Link to="/trip-planner" onClick={closeMenu}>
+                                    <Wallet size={17} />
                                     Smart Trip Planner
                                 </Link>
 
-                                <Link to="/wishlist" className="nav-link">
-                                    <Heart size={17} />
-                                    Wishlist
-                                </Link>
-
-                                <Link to="/guides"><Users2 size={17} />
+                                <Link to="/guides" onClick={closeMenu}>
+                                    <Users2 size={17} />
                                     Tour Guides
                                 </Link>
 
@@ -105,29 +178,118 @@ function Navbar() {
 
                     </div>
 
-                    <a href="/packages">Packages</a>
 
-                    <a href="/community">Community</a>
+                    <Link to="/packages" onClick={closeMenu}>
+                        Packages
+                    </Link>
+
+                    <Link to="/community" onClick={closeMenu}>
+                        Community
+                    </Link>
+
+
+                    {/* MOBILE ACTIONS */}
+
+                    <div className="mobile-nav-actions">
+
+                        <Link
+                            to="/wishlist"
+                            className="mobile-wishlist"
+                            onClick={closeMenu}
+                        >
+                            <Heart size={17} />
+                            Wishlist
+                        </Link>
+
+
+                        {loggedIn ? (
+
+                            <>
+                                <Link
+                                    to="/dashboard"
+                                    className="login-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Dashboard
+                                </Link>
+
+                                <button
+                                    className="signup-btn"
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </button>
+                            </>
+
+                        ) : (
+
+                            <>
+                                <Link
+                                    to="/login"
+                                    className="login-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Log in
+                                </Link>
+
+                                <Link
+                                    to="/register"
+                                    className="signup-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Sign up
+                                </Link>
+                            </>
+
+                        )}
+
+                    </div>
 
                 </div>
 
 
-
+                {/* DESKTOP ACTIONS */}
 
                 <div className="navbar-actions">
 
-                    <button className="login-btn">
-                        Log in
-                    </button>
+                    <Link to="/wishlist" className="nav-link">
+                        <Heart size={17} />
+                    </Link>
 
-                    <button className="signup-btn">
-                        Sign up
-                    </button>
+
+                    {loggedIn ? (
+
+                        <>
+                            <Link to="/dashboard" className="login-btn">
+                                Dashboard
+                            </Link>
+
+                            <button
+                                className="signup-btn"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+                        </>
+
+                    ) : (
+
+                        <>
+                            <Link to="/login" className="login-btn">
+                                Log in
+                            </Link>
+
+                            <Link to="/register" className="signup-btn">
+                                Sign up
+                            </Link>
+                        </>
+
+                    )}
 
                 </div>
 
 
-
+                {/* MOBILE MENU BUTTON */}
 
                 <button
                     className="mobile-menu-btn"
@@ -140,12 +302,13 @@ function Navbar() {
 
                 </button>
 
+
             </div>
 
         </nav>
 
-    )
+    );
 
 }
 
-export default Navbar
+export default Navbar;

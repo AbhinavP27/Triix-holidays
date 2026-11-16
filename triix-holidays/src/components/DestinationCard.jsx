@@ -1,7 +1,9 @@
-import { MapPin, Star, ArrowUpRight } from 'lucide-react'
+import { MapPin, Star, ArrowUpRight } from 'lucide-react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 import WishlistButton from "./WishlistButton";
+
 
 function DestinationCard({ destination }) {
 
@@ -16,7 +18,11 @@ function DestinationCard({ destination }) {
                     alt={destination.name}
                     className="destination-image"
                 />
+
+                {/* WISHLIST */}
+
                 <div className="destination-wishlist">
+
                     <WishlistButton
                         item={{
                             id: `destination-${destination.id}`,
@@ -27,18 +33,29 @@ function DestinationCard({ destination }) {
                             price: destination.price
                         }}
                     />
+
                 </div>
+
+
+                {/* CATEGORY */}
+
                 <span className="destination-category">
+
                     {destination.category}
+
                 </span>
 
-                <button className="destination-favourite">
-                    ♡
-                </button>
+
 
             </div>
 
+
+            {/* DESTINATION DETAILS */}
+
             <div className="destination-details">
+
+
+                {/* LOCATION */}
 
                 <div className="destination-location">
 
@@ -50,43 +67,66 @@ function DestinationCard({ destination }) {
 
                 </div>
 
+
+                {/* TITLE AND RATING */}
+
                 <div className="destination-title-row">
 
                     <h3>{destination.name}</h3>
 
                     <div className="destination-rating">
 
-                        <Star size={15} fill="#FFB547" color="#FFB547" />
+                        <Star
+                            size={15}
+                            fill="#FFB547"
+                            color="#FFB547"
+                        />
 
                         <span>{destination.rating}</span>
 
                     </div>
 
-
                 </div>
 
+
+                {/* DESCRIPTION */}
+
                 <p className="destination-description">
+
                     {destination.description}
+
                 </p>
+
+
+                {/* PRICE AND EXPLORE */}
 
                 <div className="destination-bottom">
 
                     <div>
 
                         <span className="price-label">
+
                             Starting from
+
                         </span>
 
                         <h4>
+
                             ₹{destination.price.toLocaleString('en-IN')}
+
                             <small> / person</small>
+
                         </h4>
 
                     </div>
 
+
+                    {/* DESTINATION DETAILS LINK */}
+
                     <Link
-                        to={`/search?destination=${encodeURIComponent(destination.name)}`}
+                        to={`/destinations/${destination.id}`}
                         className="destination-explore"
+                        aria-label={`Explore ${destination.name}`}
                     >
 
                         <ArrowUpRight size={19} />
@@ -99,8 +139,8 @@ function DestinationCard({ destination }) {
 
         </div>
 
-    )
+    );
 
 }
 
-export default DestinationCard
+export default DestinationCard;

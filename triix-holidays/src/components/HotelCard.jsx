@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import {
-  MapPin,
-  Star,
-  Wifi,
-  Coffee,
-  ArrowUpRight
+    MapPin,
+    Star,
+    Wifi,
+    Coffee,
+    ArrowUpRight
 } from "lucide-react";
 
 import { motion } from "framer-motion";
@@ -11,103 +12,105 @@ import "./HotelCard.css";
 
 function HotelCard({ hotel }) {
 
-  return (
-    <motion.div
-      className="hotel-card"
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.25 }}
-    >
+    return (
+        <motion.div
+            className="hotel-card"
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.25 }}
+        >
 
-      {/* Hotel Image */}
+            {/* Hotel Image */}
 
-      <div className="hotel-image-wrapper">
+            <div className="hotel-image-wrapper">
 
-        <img
-          src={hotel.image}
-          alt={hotel.name}
-          className="hotel-image"
-        />
+                <img
+                    src={hotel.image}
+                    alt={hotel.name}
+                    className="hotel-image"
+                />
 
-        <span className="hotel-category">
-          {hotel.category}
-        </span>
+                <span className="hotel-category">
+                    {hotel.category}
+                </span>
 
-      </div>
+            </div>
 
-      {/* Hotel Details */}
+            {/* Hotel Details */}
 
-      <div className="hotel-content">
+            <div className="hotel-content">
 
-        <div className="hotel-location">
-          <MapPin size={15} />
-          {hotel.location}
-        </div>
+                <div className="hotel-location">
+                    <MapPin size={15} />
+                    {hotel.location}
+                </div>
 
-        <h3>{hotel.name}</h3>
+                <h3>{hotel.name}</h3>
 
-        {/* Rating */}
+                {/* Rating */}
 
-        <div className="hotel-rating">
+                <div className="hotel-rating">
 
-          <span className="rating-score">
-            <Star size={15} fill="#FFB547" color="#FFB547" />
-            {hotel.rating}
-          </span>
+                    <span className="rating-score">
+                        <Star size={15} fill="#FFB547" color="#FFB547" />
+                        {hotel.rating}
+                    </span>
 
-          <span className="rating-reviews">
-            ({hotel.reviews} reviews)
-          </span>
+                    <span className="rating-reviews">
+                        ({hotel.reviews} reviews)
+                    </span>
 
-          <span className="hotel-stars">
-            {"★".repeat(hotel.stars)}
-          </span>
+                    <span className="hotel-stars">
+                        {"★".repeat(hotel.stars)}
+                    </span>
 
-        </div>
+                </div>
 
-        <p className="hotel-description">
-          {hotel.description}
-        </p>
+                <p className="hotel-description">
+                    {hotel.description}
+                </p>
 
-        {/* Facilities */}
+                {/* Facilities */}
 
-        <div className="hotel-facilities">
+                <div className="hotel-facilities">
 
-          {hotel.facilities.map((facility, index) => (
+                    {hotel.facilities.map((facility, index) => (
 
-            <span key={index}>
-              {facility}
-            </span>
+                        <span key={index}>
+                            {facility}
+                        </span>
 
-          ))}
+                    ))}
 
-        </div>
+                </div>
 
-        {/* Footer */}
+                {/* Footer */}
 
-        <div className="hotel-footer">
+                <div className="hotel-footer">
 
-          <div className="hotel-price">
+                    <div className="hotel-price">
 
-            <small>Starting from</small>
+                        <small>Starting from</small>
 
-            <h4>
-              ₹{hotel.price.toLocaleString("en-IN")}
-              <span>/ night</span>
-            </h4>
+                        <h4>
+                            ₹{hotel.price.toLocaleString("en-IN")}
+                            <span>/ night</span>
+                        </h4>
 
-          </div>
+                    </div>
 
-          <button className="hotel-button">
-            View Hotel
-            <ArrowUpRight size={16} />
-          </button>
+                    <Link
+                        to={`/booking/hotel/${hotel.id}`}
+                        className="hotel-booking-btn"
+                    >
+                        Book Now
+                    </Link>
 
-        </div>
+                </div>
 
-      </div>
+            </div>
 
-    </motion.div>
-  );
+        </motion.div>
+    );
 }
 
 export default HotelCard;

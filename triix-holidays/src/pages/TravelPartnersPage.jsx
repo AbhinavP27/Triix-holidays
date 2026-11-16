@@ -13,8 +13,10 @@ import initialPartners from "../data/travelPartners";
 import TravelPartnerCard from "../components/TravelPartnerCard";
 
 import "./TravelPartnersPage.css";
+import { useToast } from '../context/ToastContext'
 
 function getLocalDate() {
+
 
   const date = new Date();
 
@@ -27,6 +29,7 @@ function getLocalDate() {
 }
 
 function TravelPartnersPage() {
+  const { showToast } = useToast();
 
   const [partners, setPartners] = useState(initialPartners);
 
@@ -102,17 +105,27 @@ function TravelPartnersPage() {
 
   // Connect with Traveller
 
+  // Connect with Traveller
+
   function handleConnect(id) {
 
-    setConnections((previous) => {
+    const alreadyConnected = connections.includes(id);
 
-      if (previous.includes(id)) {
-        return previous;
-      }
+    if (alreadyConnected) {
 
-      return [...previous, id];
+      setConnections((previous) =>
+        previous.filter((connectionId) => connectionId !== id)
+      );
 
-    });
+      showToast("Travel partner request cancelled", "info");
+
+    } else {
+
+      setConnections((previous) => [...previous, id]);
+
+      showToast("Travel partner request sent!", "success");
+
+    }
 
   }
 

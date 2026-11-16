@@ -1,6 +1,7 @@
 import { MapPin, Star, Clock, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import WishlistButton from "./WishlistButton";
+import { Link } from "react-router-dom"
 
 function ActivityCard({ activity }) {
     return (
@@ -69,9 +70,12 @@ function ActivityCard({ activity }) {
                         <h4>₹{activity.price.toLocaleString("en-IN")}</h4>
                     </div>
 
-                    <button className="activity-button">
-                        Explore <ArrowUpRight size={16} />
-                    </button>
+                    <Link
+                        to={`/booking/activity/${activity.id}`}
+                        className="activity-booking-btn"
+                    >
+                        Book Activity
+                    </Link>
 
                 </div>
 

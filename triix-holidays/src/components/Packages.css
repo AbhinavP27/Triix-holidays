@@ -222,29 +222,79 @@
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+/* =====================================
+   PACKAGES RESPONSIVE
+===================================== */
+
+@media (max-width: 1024px) {
 
     .packages-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .package-content {
+        padding: 18px;
     }
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     .packages-section {
         padding: 65px 5%;
     }
 
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .package-card {
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto;
+    }
+
     .packages-heading {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .package-image-wrapper {
+        height: 250px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .packages-section {
+        padding: 55px 5%;
+    }
+
+    .package-image-wrapper {
+        height: 210px;
+    }
+
+    .package-content {
+        padding: 16px;
+    }
+
+    .package-content h3 {
+        font-size: 19px;
     }
 
     .package-bottom {
-        align-items: flex-start;
-        gap: 15px;
         flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .package-book-btn {
+        justify-content: center;
+        width: 100%;
     }
 
 }

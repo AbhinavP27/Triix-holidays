@@ -1,0 +1,57 @@
+.empty-state {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 30px;
+}
+
+.empty-state-icon {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #EAF3F8;
+    color: #2878A5;
+
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 23px;
+    color: #142B3B;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #718096;
+    font-size: 14px;
+    max-width: 350px;
+    margin-bottom: 20px;
+}
+
+.empty-state-button {
+    background: #142B3B;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px 22px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.empty-state-button:hover {
+    background: #2878A5;
+}

@@ -8,6 +8,8 @@ const destinations = [
         price: 2500,
         rating: 4.9,
         reviews: 1250,
+        latitude: 10.0889,
+        longitude: 77.0595,
         category: "Mountains",
         description: "Explore beautiful tea plantations and misty mountains."
     },
@@ -20,6 +22,8 @@ const destinations = [
         price: 4000,
         rating: 4.8,
         reviews: 2100,
+        latitude: 15.2993,
+        longitude:74.1240,
         category: "Beach",
         description: "Enjoy beautiful beaches and exciting nightlife."
     },
@@ -32,6 +36,8 @@ const destinations = [
         price: 5000,
         rating: 4.9,
         reviews: 1800,
+        latitude: 32.2432,
+        longitude: 77.1892,
         category: "Mountains",
         description: "Experience snow-covered mountains and adventure."
     },
@@ -44,6 +50,8 @@ const destinations = [
         price: 2000,
         rating: 4.7,
         reviews: 950,
+        latitude: 11.6854,
+        longitude: 76.1320,
         category: "Nature",
         description: "Discover waterfalls, forests and beautiful landscapes."
     },
@@ -56,6 +64,8 @@ const destinations = [
         price: 3000,
         rating: 4.8,
         reviews: 1100,
+        latitude: 11.4102,
+        longitude: 76.6950,
         category: "Mountains",
         description: "Enjoy peaceful hill stations and scenic train journeys."
     },
@@ -68,6 +78,8 @@ const destinations = [
         price: 3500,
         rating: 4.8,
         reviews: 1300,
+        latitude: 9.4981,
+        longitude: 76.3388,
         category: "Backwaters",
         description: "Experience relaxing houseboat journeys and backwaters."
     }

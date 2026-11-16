@@ -1,6 +1,7 @@
 import Destinations from "../components/Destinations";
 import Attractions from "../components/Attractions";
 import Activities from "../components/Activities";
+import TravelMap from '../components/TravelMap'
 import "./Explore.css";
 
 function Explore() {
@@ -15,6 +16,8 @@ function Explore() {
       </section>
 
       <Destinations />
+
+      <TravelMap />
 
       <Attractions />
 

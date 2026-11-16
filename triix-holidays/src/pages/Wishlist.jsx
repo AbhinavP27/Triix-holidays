@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Heart, Trash2, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 import {
   getWishlist,
   toggleWishlist
 } from "../utils/wishlist";
 
 import "./Wishlist.css";
+import EmptyState from '../components/EmptyState'
 
 function Wishlist() {
+  const navigate = useNavigate();
 
   const [items, setItems] = useState(
     () => getWishlist()
@@ -110,25 +112,12 @@ function Wishlist() {
 
         {items.length === 0 ? (
 
-          <div className="empty-wishlist">
-
-            <Heart size={55} />
-
-            <h3>Your wishlist is empty</h3>
-
-            <p>
-              You haven't saved any destinations
-              or activities yet.
-            </p>
-
-            <Link
-              to="/explore"
-              className="explore-wishlist-btn"
-            >
-              Explore Destinations
-            </Link>
-
-          </div>
+          <EmptyState
+            title="Your wishlist is empty"
+            description="You haven't saved any destinations or activities yet."
+            buttonText="Explore Destinations"
+            onAction={() => navigate('/explore')}
+          />
 
         ) : (
 

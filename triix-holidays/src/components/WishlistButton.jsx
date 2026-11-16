@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
-
+import { useToast } from '../context/ToastContext'
 import {
   isSaved,
   toggleWishlist
 } from "../utils/wishlist";
 
 function WishlistButton({ item }) {
+
+  const { showToast } = useToast();
 
   const [saved, setSaved] = useState(
     () => isSaved(item.id)
@@ -37,16 +39,24 @@ function WishlistButton({ item }) {
     e.preventDefault();
     e.stopPropagation();
 
+    const wasSaved = isSaved(item.id);
+
     toggleWishlist(item);
 
     setSaved(isSaved(item.id));
+
+    if (wasSaved) {
+      showToast("Removed from your wishlist", "info");
+    } else {
+      showToast("Added to your wishlist!", "success");
+    }
+
   };
 
   return (
     <button
-      className={`wishlist-button ${
-        saved ? "saved" : ""
-      }`}
+      className={`wishlist-button ${saved ? "saved" : ""
+        }`}
       onClick={handleWishlist}
       aria-label={
         saved ? "Remove from wishlist" : "Add to wishlist"

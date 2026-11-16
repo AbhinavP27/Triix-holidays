@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 
 import destinations from '../data/destinations'
 
+
 import './Hero.css'
 
 function Hero() {
@@ -79,7 +80,7 @@ function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-
+                    
                     <span className="hero-badge">
                         ✦ EXPLORE THE WORLD WITH TRIIX
                     </span>

@@ -1,0 +1,391 @@
+.destination-details-page {
+    padding: 45px 0 80px;
+    background: #F7F9FC;
+}
+
+
+/* BACK LINK */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #2878A5;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+/* HEADER */
+
+.destination-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.destination-label {
+    color: #FF8A4C;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.destination-details-header h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    margin: 8px 0;
+    color: #142B3B;
+}
+
+.destination-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #718096;
+}
+
+.destination-rating {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.destination-rating span {
+    color: #718096;
+    font-size: 14px;
+}
+
+
+/* GALLERY */
+
+.destination-gallery {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 12px;
+    height: 400px;
+    margin-bottom: 45px;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    min-height: 0;
+}
+
+.gallery-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* MAIN CONTENT */
+
+.destination-content-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 45px;
+    align-items: start;
+}
+
+.destination-section {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5eaf0;
+}
+
+.destination-section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #142B3B;
+}
+
+.destination-section > p {
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+
+/* HIGHLIGHTS */
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #526273;
+}
+
+.highlight-item svg {
+    color: #2878A5;
+}
+
+
+/* ATTRACTIONS */
+
+.attraction-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.attraction-details-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #edf0f4;
+}
+
+.attraction-details-card img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+}
+
+.attraction-details-card div {
+    padding: 15px;
+}
+
+.attraction-details-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.attraction-details-card p {
+    font-size: 13px;
+    color: #718096;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* ACTIVITIES */
+
+.activity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.activity-tags span {
+    background: white;
+    border: 1px solid #e5eaf0;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #526273;
+}
+
+
+/* TRAVEL TIPS */
+
+.travel-tips-list {
+    padding-left: 20px;
+    color: #64748b;
+    line-height: 2;
+}
+
+
+/* BOOKING CARD */
+
+.destination-booking-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #e5eaf0;
+    box-shadow: 0 8px 30px rgba(20, 43, 59, 0.05);
+    position: sticky;
+    top: 100px;
+}
+
+.destination-price {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #edf0f4;
+    margin-bottom: 20px;
+}
+
+.destination-price span {
+    color: #718096;
+    font-size: 14px;
+}
+
+.destination-price h2 {
+    color: #142B3B;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+.destination-price small {
+    color: #718096;
+}
+
+
+.booking-info-item {
+    display: flex;
+    gap: 13px;
+    margin-bottom: 22px;
+}
+
+.booking-info-item svg {
+    color: #2878A5;
+    flex-shrink: 0;
+}
+
+.booking-info-item strong {
+    font-size: 14px;
+}
+
+.booking-info-item p {
+    font-size: 13px;
+    color: #718096;
+    margin-top: 5px;
+}
+
+
+/* BUTTONS */
+
+.plan-trip-btn,
+.view-hotels-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 14px;
+    border-radius: 9px;
+    font-weight: 700;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.plan-trip-btn {
+    background: #2878A5;
+    color: white;
+    margin-top: 25px;
+}
+
+.plan-trip-btn:hover {
+    background: #142B3B;
+    color: white;
+}
+
+.view-hotels-btn {
+    margin-top: 12px;
+    border: 1px solid #2878A5;
+    color: #2878A5;
+}
+
+.view-hotels-btn:hover {
+    background: #2878A5;
+    color: white;
+}
+
+.booking-disclaimer {
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.6;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* NOT FOUND */
+
+.destination-not-found {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.destination-not-found a {
+    background: #2878A5;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 991px) {
+
+    .destination-content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-booking-card {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .destination-details-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .destination-details-header h1 {
+        font-size: 30px;
+    }
+
+    .destination-gallery {
+        grid-template-columns: 1fr;
+        height: 300px;
+    }
+
+    .gallery-side {
+        display: none;
+    }
+
+    .attraction-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .destination-details-page {
+        padding-top: 30px;
+    }
+
+    .destination-gallery {
+        height: 240px;
+        border-radius: 12px;
+    }
+
+    .highlight-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

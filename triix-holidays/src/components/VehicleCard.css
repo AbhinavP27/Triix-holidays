@@ -166,3 +166,34 @@
 .vehicle-button:hover {
   background: #e96f30;
 }
+
+.vehicle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  background: #142B3B;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.vehicle-button:hover {
+  background: #2878A5;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.vehicle-button svg {
+  transition: transform 0.3s ease;
+}
+
+.vehicle-button:hover svg {
+  transform: translate(2px, -2px);
+}
